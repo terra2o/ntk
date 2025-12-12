@@ -1,0 +1,14 @@
+C:\Users\terra\Documents\csharp projects\number_toolkit\number_toolkit\bin\Debug\net9.0\number_toolkit.exe
+C:\Users\terra\Documents\csharp projects\number_toolkit\number_toolkit\bin\Debug\net9.0\number_toolkit.deps.json
+C:\Users\terra\Documents\csharp projects\number_toolkit\number_toolkit\bin\Debug\net9.0\number_toolkit.runtimeconfig.json
+C:\Users\terra\Documents\csharp projects\number_toolkit\number_toolkit\bin\Debug\net9.0\number_toolkit.dll
+C:\Users\terra\Documents\csharp projects\number_toolkit\number_toolkit\bin\Debug\net9.0\number_toolkit.pdb
+C:\Users\terra\Documents\csharp projects\number_toolkit\number_toolkit\obj\Debug\net9.0\number_toolkit.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\terra\Documents\csharp projects\number_toolkit\number_toolkit\obj\Debug\net9.0\number_toolkit.AssemblyInfoInputs.cache
+C:\Users\terra\Documents\csharp projects\number_toolkit\number_toolkit\obj\Debug\net9.0\number_toolkit.AssemblyInfo.cs
+C:\Users\terra\Documents\csharp projects\number_toolkit\number_toolkit\obj\Debug\net9.0\number_toolkit.csproj.CoreCompileInputs.cache
+C:\Users\terra\Documents\csharp projects\number_toolkit\number_toolkit\obj\Debug\net9.0\number_toolkit.dll
+C:\Users\terra\Documents\csharp projects\number_toolkit\number_toolkit\obj\Debug\net9.0\refint\number_toolkit.dll
+C:\Users\terra\Documents\csharp projects\number_toolkit\number_toolkit\obj\Debug\net9.0\number_toolkit.pdb
+C:\Users\terra\Documents\csharp projects\number_toolkit\number_toolkit\obj\Debug\net9.0\number_toolkit.genruntimeconfig.cache
+C:\Users\terra\Documents\csharp projects\number_toolkit\number_toolkit\obj\Debug\net9.0\ref\number_toolkit.dll
