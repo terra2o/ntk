@@ -8,16 +8,25 @@ using NumberToolkit.Operations;
 
 class Program
 {
-    static void Main()
+    static void Main(string[] args)
     {
-        Console.Write("Enter a number: ");
-        string input = Console.ReadLine();
-        input = input?.Replace('.', ',');
+        string input;
+        if (args.Length > 0)
+        {
+            input = args[0];
+        }
+        else
+        {
+            Console.Write("Enter a number: ");
+            input = Console.ReadLine();
+        }
+
+        input = input.Replace(',', '.');
 
         if (!double.TryParse(input, 
-        NumberStyles.Any,
-        CultureInfo.InvariantCulture,
-        out double number))
+            NumberStyles.Any,
+            CultureInfo.InvariantCulture,
+            out double number))
         {
             Console.WriteLine("Invalid number.");
             return;

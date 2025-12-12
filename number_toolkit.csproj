@@ -8,7 +8,7 @@
     <ToolCommandName>ntk</ToolCommandName>
 
     <PackageId>NumberToolKit</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>terra2o</Authors>
     <Description>Information about a number.</Description>
     <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
