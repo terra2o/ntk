@@ -2,8 +2,8 @@ namespace NumberToolkit.Operations
 {
     public static class SquareAndCube
     {
-        public static double Square(double number) => number * number;
+        public static decimal Square(decimal number) => number * number;
 
-        public static double Cube(double number) => number * number * number;
+        public static decimal Cube(decimal number) => number * number * number;
     }
 }

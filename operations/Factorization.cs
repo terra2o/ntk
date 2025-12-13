@@ -11,13 +11,23 @@ namespace NumberToolkit.Operations
         public static List<long> GetFactors(long n)
         {
             var factors = new List<long>();
+            n = Math.Abs(n);
 
-            for (long i = 1; i <= Math.Abs(n); i++)
+            long limit = (long)Math.Sqrt(n);
+
+            for (long i = 1; i <= limit; i++)
             {
                 if (n % i == 0)
+                {
                     factors.Add(i);
+
+                    long other = n / i;
+                    if (other != i)
+                        factors.Add(other);
+                }
             }
 
+            factors.Sort();
             return factors;
         }
 
@@ -50,7 +60,7 @@ namespace NumberToolkit.Operations
                 n /= 2;
             }
 
-            for (int i = 3; i < Math.Sqrt(n); i += 2)
+            for (long i = 3; i * i <= n; i += 2)
             {
                 while (n % i == 0)
                 {

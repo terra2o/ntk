@@ -2,9 +2,9 @@ namespace NumberToolkit.Operations
 {
     public static class PercantageCalculator
     {
-        public static double Calculate(double number, int percent)
+        public static decimal Calculate(decimal number, decimal percent)
         {
-            return number * (percent / 100.0);
+            return number * (percent / 100m);
         }
     }
 }
