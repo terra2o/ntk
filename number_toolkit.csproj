@@ -15,4 +15,8 @@
     <RepositoryUrl>https://github.com/terra2o/ntk</RepositoryUrl>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Spectre.Console" Version="0.54.0" />
+  </ItemGroup>
+
 </Project>

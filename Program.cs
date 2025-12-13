@@ -6,11 +6,18 @@ using System.Globalization;
 using System.Runtime.InteropServices;
 using NumberToolkit.Operations;
 using System.Numerics;
+using Spectre.Console;
 
 class Program
 {
     static void Main(string[] args)
     {
+        var infoTable = new Table()
+            .Border(TableBorder.Rounded)
+            .Title("[yellow]Number Information[/]")
+            .AddColumn("Operation")
+            .AddColumn("Result");
+
         string input;
         if (args.Length > 0)
         {
@@ -18,8 +25,7 @@ class Program
         }
         else
         {
-            Console.Write("Enter a number: ");
-            input = Console.ReadLine();
+            input = AnsiConsole.Ask<string>("[green]Enter a number:[/]");
         }
 
         input = input.Replace(',', '.');
@@ -29,26 +35,89 @@ class Program
             CultureInfo.InvariantCulture,
             out double number))
         {
-            Console.WriteLine("Invalid number.");
+            AnsiConsole.Markup("[red]Invalid number. [/]");
             return;
         }
 
         BigInteger big = BigInteger.Parse(input);
         decimal decNumber = (decimal)number;
 
-        Console.WriteLine($"Reverse: {Reverser.Reverse(input)}");
-        Console.WriteLine("Every digit: " + DigitOperations.EveryDigit(number));
-        Console.WriteLine($"Sum Digits:  {DigitOperations.Sum(input)}");
-        Console.WriteLine($"Difference of digits: {DigitOperations.Difference(input)}");
-        Console.WriteLine($"Square: {SquareAndCube.Square(decNumber)}");
-        Console.WriteLine($"Cube: {BigInteger.Pow(big, 3)}");
-        Console.WriteLine($"Factors: {string.Join(", ", Factorization.GetFactors((long)number))}");
-        Console.WriteLine($"Is prime: {Factorization.CheckPrime((long)number)}");
-        Console.WriteLine($"Prime factors: {string.Join(", ", Factorization.PrimeFactorization((long)number))}");
+        infoTable.AddRow("Reverse", Reverser.Reverse(input));
+        infoTable.AddRow("Every digit", DigitOperations.EveryDigit(number).ToString());
+        infoTable.AddRow("Sum digits", DigitOperations.Sum(input).ToString());
+        infoTable.AddRow("Difference of digits", DigitOperations.Difference(input).ToString());
+        infoTable.AddRow("Square", SquareAndCube.Square(decNumber).ToString());
+        infoTable.AddRow("Cube", BigInteger.Pow(big, 3).ToString());
+        infoTable.AddRow("Is prime", Factorization.CheckPrime((long)number).ToString());
+        AnsiConsole.Write(infoTable);
 
-        for (int i = 0; i < 100; i++)
+        // --------------------
+        // Factors
+        // --------------------
+        var factorsTable = new Table()
+            .Border(TableBorder.Rounded)
+            .Title("[yellow]Factors[/]")
+            .AddColumn("Factor");
+
+        foreach (var factor in Factorization.GetFactors((long)number))
         {
-            Console.WriteLine($"%{i}: {PercantageCalculator.Calculate(decNumber, i)}");
+            factorsTable.AddRow(factor.ToString());
         }
+
+        // --------------------
+        // Prime Factors
+        // --------------------  
+        var primeFactorsTable = new Table()
+            .Border(TableBorder.Rounded)
+            .Title("[yellow]Prime Factors[/]")
+            .AddColumn("Prime");
+
+        foreach (var pf in Factorization.PrimeFactorization((long)number))
+        {
+            primeFactorsTable.AddRow(pf.ToString());
+        }
+
+        // --------------------
+        // Percantages
+        // --------------------        
+        var grid = new Grid();
+
+        for (int i = 0; i <= 6; i++)
+        {
+            grid.AddColumn();
+        }
+
+        for (int i = 0; i < 100; i += 6)
+        {
+            grid.AddRow(
+                $"%{i}: {PercantageCalculator.Calculate(decNumber, i)}",
+                $"%{i+1}: {PercantageCalculator.Calculate(decNumber, i+1)}",
+                $"%{i+2}: {PercantageCalculator.Calculate(decNumber, i+2)}",
+                $"%{i+3}: {PercantageCalculator.Calculate(decNumber, i+3)}",
+                $"%{i+4}: {PercantageCalculator.Calculate(decNumber, i+4)}",
+                $"%{i+5}: {PercantageCalculator.Calculate(decNumber, i+5)}"
+            );
+        }
+        var percentPanel = new Panel(grid)
+        .Header("[yellow]Percentages[/]")
+        .Border(BoxBorder.Rounded);
+
+        /*  --------------------
+            factorsTable,
+            primeFactorsTable,
+            grid
+            TOGETHER IN COLUMNS
+            --------------------
+        */
+        var layout = new Columns(
+            factorsTable,
+            primeFactorsTable,
+            percentPanel
+        )
+        {
+            Expand = true
+        };
+
+        AnsiConsole.Write(layout);
     }
 }
